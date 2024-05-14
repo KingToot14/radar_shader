@@ -32,11 +32,17 @@ By attaching this code to the `_ready` function in the 'Blip Viewport', we can r
 ```
 This code essentially removes the second layer from the main viewport's rendering by setting the second bit of the `canvas_cull_mask` to 0 (disabled)
 
-We're almost done. The last thing we need to do is set up the SubViewport 'Blip Viewport', and a ViewportTexture. Starting with the Blip Viewport, we need to set ITS cull mask to only render objects on layer two:\
+We're almost done. The last thing we need to do is set up the SubViewport 'Blip Viewport' and have it render to a ViewportTexture. Starting with the Blip Viewport, we need to set its cull mask to only render objects on layer two:\
 \
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/e22fa0af-cc91-4daa-83eb-41aa9d56c4b8)
 
-There are also some additional settings I changed that give us a better result. `Disable 3D` is useful since we're only rendering a 2D scene (unless you need 3D rendering). `Transparent BG` is useful since we will be overlaying the content of 'Blip Viewport' onto another image. Finally, `Handle Input Locally` is unchecked since this viewport doesn't need to do any input handling
+There are also some additional settings I changed that give us a better result. `Disable 3D` is useful since we're only rendering a 2D scene (unless you need 3D rendering). `Transparent BG` is useful since we will be overlaying the content of Blip Viewport onto another image. Finally, `Handle Input Locally` is unchecked since this viewport doesn't need to do any input handling
+
+Now onto the ViewportTexture. We can create one of these in a TextureRect using the dropdown menu:\
+\
+![image](https://github.com/KingToot14/radar_shader/assets/46078617/b4d4dda3-e64a-484d-a347-1885455c5bc5)
+
+When the ViewportTexture is created, it will ask us for a viewport and we will select the Blip Viewport. The final thing we need to worry about is resizing the TextureRect. By default, the rect will have a minimum size bound to the viewport's size. Typically (at least for a radar/minimap) we want this rect to be smaller than the viewport size (which is actually slightly larger than the screen size in this project). To counteract this, we simply set the `Expand Mode` of the TextureRect to 'Ignore Size' instead of 'Keep Size'. If everything went right, 
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

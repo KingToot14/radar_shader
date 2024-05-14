@@ -56,9 +56,6 @@ Depending on your project layout, you may need to play around with some settings
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/20195bdf-d3b2-47ef-be5f-e13a7b3e3d49)
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/520a2db9-d73a-4a0d-aad4-e4b77332900d)
 
-## Other Systems
-Also included in this project is a simple movement script and a drag-and-drop system 
-
 ## Credits
 All the game and shader code was created by me\
 Sprites and Tiles were provided for free by [Kenney](https://kenney.nl)

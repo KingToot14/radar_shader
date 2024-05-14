@@ -44,16 +44,17 @@ Now onto the ViewportTexture. We can create one of these in a TextureRect using 
 \
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/b4d4dda3-e64a-484d-a347-1885455c5bc5)
 
-When the ViewportTexture is created, it will ask us for a viewport and we will select the Blip Viewport. The final thing we need to worry about is resizing the TextureRect. By default, the rect will have a minimum size bound to the viewport's size. Typically (at least for a radar/minimap) we want this rect to be smaller than the viewport size (which is actually slightly larger than the screen size in this project). To counteract this, we simply set the `Expand Mode` of the TextureRect to 'Ignore Size' instead of 'Keep Size'. If everything went correctly, you should see the blips appear on the TextureRect and they should follow any movement the entities make!
+When the ViewportTexture is created, it will ask us for a viewport and we will select the Blip Viewport. The final thing we need to worry about is resizing the TextureRect
+
+By default, the rect will have a minimum size bound to the viewport's size. Typically (at least for a radar/minimap) we want this rect to be smaller than the viewport size (which is actually slightly larger than the screen size in this project). To counteract this, we simply set the `Expand Mode` of the TextureRect to 'Ignore Size' instead of 'Keep Size'. If everything went correctly, you should see the blips appear on the TextureRect and they should follow any movement the entities make!
 
 ### Additional Notes
 Depending on your project layout, you may need to play around with some settings to get the blips to render correctly. For me, I had to do two things:
 1. I had to make the blips 2-3 times larger than I originally expected since we are scaling down the viewport render by 4 times
-2. I had to do an awkward fix to get the blips to render on top of the radar base: I set the blips to be `Top Level`, and add a RemoteTransform2D to each entity and connect it to the blip everything still moved in sync (Any suggestions for a better method would be greatly appreciated!)\
+2. I had to do an awkward fix to get the blips to render on top of the radar base: I set the blips to be `Top Level`, and added a RemoteTransform2D to each entity and connected it to the blip so everything still moved in sync (Any suggestions for a better method would be greatly appreciated!)\
 \
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/20195bdf-d3b2-47ef-be5f-e13a7b3e3d49)
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/520a2db9-d73a-4a0d-aad4-e4b77332900d)
-
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

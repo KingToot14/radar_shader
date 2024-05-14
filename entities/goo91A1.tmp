@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxgjm3nke651"]
+
+[ext_resource type="Texture2D" uid="uid://dm270sg2xrack" path="res://icon.svg" id="1_sh3l4"]
+[ext_resource type="Script" path="res://scripts/random_movement.gd" id="2_phj8p"]
+[ext_resource type="Script" path="res://scripts/blip.gd" id="3_0tkaf"]
+[ext_resource type="PackedScene" uid="uid://cccuglnuhn14h" path="res://blips/good_blip.tscn" id="3_ceumy"]
+
+[node name="Good Guy" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_sh3l4")
+script = ExtResource("2_phj8p")
+movement_range = Vector2(100, 100)
+metadata/_edit_group_ = true
+
+[node name="Remote Transform" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Good Blip")
+
+[node name="Good Blip" parent="." instance=ExtResource("3_ceumy")]
+script = ExtResource("3_0tkaf")

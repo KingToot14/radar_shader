@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://7dybw363rl3a"]
+
+[ext_resource type="PackedScene" uid="uid://brseq4763pshk" path="res://scenes/radar_panel.tscn" id="1_48381"]
+[ext_resource type="PackedScene" uid="uid://cxgjm3nke651" path="res://entities/good_guy.tscn" id="2_ka0tk"]
+[ext_resource type="PackedScene" uid="uid://dj45ga0cc2dds" path="res://entities/bad_guy.tscn" id="3_0l60h"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cq2nw"]
+viewport_path = NodePath("UI/SubViewport")
+
+[node name="Main" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Radar Panel" parent="UI" instance=ExtResource("1_48381")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -248.0
+offset_right = 248.0
+offset_bottom = -8.0
+grow_vertical = 0
+pos_offset = Vector2(-280, 0)
+pos_scale = 3.0
+metadata/_edit_group_ = true
+
+[node name="Blips" type="TextureRect" parent="UI/Radar Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -120.0
+offset_right = 213.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_cq2nw")
+
+[node name="SubViewport" type="SubViewport" parent="UI"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(426, 240)
+
+[node name="Camera2D" type="Camera2D" parent="UI/SubViewport"]
+
+[node name="Grass" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.415686, 0.909804, 0.392157, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Grass"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Good Guy" parent="Grass" instance=ExtResource("2_ka0tk")]
+position = Vector2(544, 264)
+movement_speed = 0.0
+
+[node name="Good Guy2" parent="Grass" instance=ExtResource("2_ka0tk")]
+position = Vector2(736, 456)
+movement_speed = 0.0
+
+[node name="Good Guy3" parent="Grass" instance=ExtResource("2_ka0tk")]
+position = Vector2(544, 456)
+movement_speed = 0.0
+
+[node name="Good Guy4" parent="Grass" instance=ExtResource("2_ka0tk")]
+position = Vector2(736, 264)
+movement_speed = 0.0
+
+[node name="Bad Guy" parent="Grass" instance=ExtResource("3_0l60h")]
+position = Vector2(800, 528)
+movement_speed = 0.0

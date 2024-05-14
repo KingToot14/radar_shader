@@ -10,9 +10,9 @@ This example project incldues 3 shaders for the radar:
 3. The expanding ring around the blips ([Link](https://godotshaders.com/shader/radar-blip-ring))
 
 ## How it Works
-I think looking aroudn in the demo project will help more than anything, but I will try to explain what's going on:\
+I think looking around in the demo project will help more than anything, but I will try to explain what's going on:
 
-First of all, in each entity (good guys, bad guys, rat), we have a "blip" object. This object is special in that it isn't supposed to be rendered by the normal viewport, but only by a special viewport designed for the radar. To do this, we use a visibility layer (Note how only the second layer is selected)\
+First of all, in each entity (good guys, bad guys, rat), we have a "blip" object. This object is special in that it isn't supposed to be rendered by the normal viewport, but only by a special viewport designed for the radar. To do this, we use a visibility layer (Notice how only the second layer is selected)\
 \
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/69f4a2e5-d94f-4bcf-9e5e-5e5c1d6c7391)
 
@@ -26,10 +26,13 @@ func _ready():
     var viewport = get_tree().root
     world_2d = viewport.world_2d
 ```
-By attaching this code to the `_ready` function in the 'Blip Viewport', we can render all the content in the root viewport (the default viewport). While we're in this script, we also need to configure the root viewport to NOT render anything on layer two. We can do this with the following code:\
+By attaching this code to the `_ready` function in the 'Blip Viewport', we can render all the content in the root viewport (the default viewport). While we're in this script, we also need to configure the root viewport to NOT render anything on layer two. We can do this with the following code:
 ```gdscript
     viewport.canvas_cull_mask &= 0b1111111101
 ```
+This code essentially removes the second layer from the main viewport's rendering by setting the second bit of the `canvas_cull_mask` to 0 (disabled)
+
+We're almost done
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

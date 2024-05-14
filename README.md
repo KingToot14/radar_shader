@@ -32,7 +32,11 @@ By attaching this code to the `_ready` function in the 'Blip Viewport', we can r
 ```
 This code essentially removes the second layer from the main viewport's rendering by setting the second bit of the `canvas_cull_mask` to 0 (disabled)
 
-We're almost done
+We're almost done. The last thing we need to do is set up the SubViewport 'Blip Viewport', and a ViewportTexture. Starting with the Blip Viewport, we need to set ITS cull mask to only render objects on layer two:\
+\
+![image](https://github.com/KingToot14/radar_shader/assets/46078617/e22fa0af-cc91-4daa-83eb-41aa9d56c4b8)
+
+There are also some additional settings I changed that give us a better result. `Disable 3D` is useful since we're only rendering a 2D scene (unless you need 3D rendering). `Transparent BG` is useful since we will be overlaying the content of 'Blip Viewport' onto another image. Finally, `Handle Input Locally` is unchecked since this viewport doesn't need to do any input handling
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

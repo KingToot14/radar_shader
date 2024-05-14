@@ -9,7 +9,12 @@ This example project incldues 3 shaders for the radar:
 2. The main circle in the radar "blip" ([Link](https://godotshaders.com/shader/radar-blip))
 3. The expanding ring around the blips ([Link](https://godotshaders.com/shader/radar-blip-ring))
 
-## How to Use
+## How it Works
+I think looking aroudn in the demo project will help more than anything, but I will try to explain what's going on:\
+
+First of all, in each entity (good guys, bad guys, rat), we have a "blip" object. This object is special in that it isn't supposed to be rendered by the normal viewport, but only by a special viewport designed for the radar. To do this, we use a visibility mask
+![image](https://github.com/KingToot14/radar_shader/assets/46078617/69f4a2e5-d94f-4bcf-9e5e-5e5c1d6c7391)
+By default, objects use the first layer. However, our blips use the second layer, which allows us to isolate them from other objects
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

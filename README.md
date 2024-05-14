@@ -19,10 +19,10 @@ By default, objects use the first layer. However, our blips use the second layer
 ![image](https://github.com/KingToot14/radar_shader/assets/46078617/693bc7b2-fbcc-48c8-8b53-331ce8292416)\
 
 Under normal circumstances, the SubViewport only renders its children, but we can create a workaround for this by setting the world_2d value
-'''gdscript
+```gdscript
 var viewport = get_tree().root
 world_2d = viewport.world_2d
-'''
+```
 
 ## Other Systems
 Also included in this project is a simple movement script and a drag-and-drop system 

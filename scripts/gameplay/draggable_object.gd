@@ -20,6 +20,9 @@ func _process(_delta):
 	if not draggable:
 		return
 	
+	if DragAndDropManager.dragged_object != null and DragAndDropManager.dragged_object != parent:
+		return
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		DragAndDropManager.dragged_object = parent
 		parent.stop_moving()

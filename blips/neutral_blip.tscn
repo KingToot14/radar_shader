@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://colqfx7083f8k"]
 
-[ext_resource type="Script" path="res://scripts/hide_in_editor.gd" id="1_78vst"]
+[ext_resource type="Script" path="res://scripts/radar/blip.gd" id="1_g62dn"]
 [ext_resource type="Shader" path="res://shaders/radar_blip.gdshader" id="2_mhaim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xygxl"]
@@ -9,11 +9,12 @@ shader_parameter/cutout = 1.0
 shader_parameter/inner_fill = 0.0
 shader_parameter/blink_speed = 0.0
 
-[node name="Neutral Blip" type="Node2D"]
+[node name="Neutral Blip" type="Node2D" node_paths=PackedStringArray("fading_objects") groups=["blip"]]
 visible = false
 top_level = true
 visibility_layer = 2
-script = ExtResource("1_78vst")
+script = ExtResource("1_g62dn")
+fading_objects = [NodePath("Blip Main")]
 
 [node name="Blip Main" type="ColorRect" parent="."]
 visibility_layer = 2

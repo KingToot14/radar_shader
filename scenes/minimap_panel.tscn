@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://1uq1jqelo7mu"]
+
+[ext_resource type="Texture2D" uid="uid://ck7tc4vxmer4s" path="res://art/ui/minimap_backing.png" id="1_epp80"]
+
+[node name="Minimap Panel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 240.0
+
+[node name="Minimap Backing" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 240.0
+texture = ExtResource("1_epp80")

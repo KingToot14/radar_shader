@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://dj45ga0cc2dds"]
 
 [ext_resource type="Texture2D" uid="uid://dbhihvatpsui" path="res://art/entities/enemy_1.png" id="1_gu6vc"]
-[ext_resource type="Script" path="res://scripts/random_movement.gd" id="2_5gud2"]
+[ext_resource type="Script" path="res://scripts/gameplay/random_movement.gd" id="1_q8rqu"]
 [ext_resource type="PackedScene" uid="uid://cd02ber7nkwi6" path="res://blips/bad_blip.tscn" id="3_d2bke"]
-[ext_resource type="Script" path="res://scripts/sprite_randomizer.gd" id="3_patud"]
+[ext_resource type="Script" path="res://scripts/gameplay/sprite_randomizer.gd" id="3_jx80a"]
 [ext_resource type="Texture2D" uid="uid://b5sslcg5vtext" path="res://art/entities/enemy_2.png" id="4_jb6h7"]
-[ext_resource type="Script" path="res://scripts/draggable_object.gd" id="6_hdac7"]
+[ext_resource type="Script" path="res://scripts/gameplay/draggable_object.gd" id="6_yagpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ehh"]
 size = Vector2(39, 42)
 
 [node name="Bad Guy" type="Node2D"]
-script = ExtResource("2_5gud2")
+script = ExtResource("1_q8rqu")
 movement_range = Vector2(80, 40)
 acceleration = 25.0
 
@@ -19,7 +19,7 @@ acceleration = 25.0
 scale = Vector2(3, 3)
 texture = ExtResource("1_gu6vc")
 flip_h = true
-script = ExtResource("3_patud")
+script = ExtResource("3_jx80a")
 textures = Array[Texture2D]([ExtResource("1_gu6vc"), ExtResource("4_jb6h7")])
 metadata/_edit_group_ = true
 
@@ -29,10 +29,11 @@ remote_path = NodePath("../Bad Blip")
 update_rotation = false
 update_scale = false
 
-[node name="Bad Blip" parent="." instance=ExtResource("3_d2bke")]
+[node name="Bad Blip" parent="." node_paths=PackedStringArray("remote_transform") instance=ExtResource("3_d2bke")]
+remote_transform = NodePath("../Remote Transform")
 
 [node name="Drag Manager" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("6_hdac7")
+script = ExtResource("6_yagpd")
 sprite = NodePath("../Sprite")
 
 [node name="Mouse Detector" type="Area2D" parent="."]

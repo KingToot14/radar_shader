@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddhwqqi7one1l"]
+
+[ext_resource type="Script" path="res://scripts/radar/radar_manager.gd" id="1_onoke"]
+[ext_resource type="Shader" path="res://shaders/radar_manual.gdshader" id="2_nqefv"]
+[ext_resource type="Texture2D" uid="uid://15ep08k6cvx5" path="res://art/ui/radar_backing_80px.png" id="2_uanjk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkcmw"]
+shader = ExtResource("2_nqefv")
+shader_parameter/radar_angle = 0.0
+shader_parameter/line_color = Color(0, 1, 1, 0.85)
+shader_parameter/trail_color = Color(0, 1, 1, 0.2)
+shader_parameter/trail_length = 0.1
+
+[node name="Radar Panel (Manual)" type="Control" node_paths=PackedStringArray("shader_rect")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 240.0
+script = ExtResource("1_onoke")
+shader_rect = NodePath("Radar")
+
+[node name="Radar Backing" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uanjk")
+expand_mode = 1
+
+[node name="Radar" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xkcmw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

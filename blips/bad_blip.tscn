@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd02ber7nkwi6"]
 
+[ext_resource type="Script" path="res://scripts/radar/blip.gd" id="1_5ij2u"]
 [ext_resource type="Shader" path="res://shaders/radar_blip.gdshader" id="1_5r5ox"]
-[ext_resource type="Script" path="res://scripts/hide_in_editor.gd" id="1_mrphh"]
 [ext_resource type="Shader" path="res://shaders/radar_blip_ring.gdshader" id="2_qx6kh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7tty"]
@@ -17,11 +17,12 @@ shader_parameter/wait_time = 0.5
 shader_parameter/speed = 1.0
 shader_parameter/alpha_boost = 2.0
 
-[node name="Bad Blip" type="Node2D"]
+[node name="Bad Blip" type="Node2D" node_paths=PackedStringArray("fading_objects") groups=["blip"]]
 visible = false
 top_level = true
 visibility_layer = 2
-script = ExtResource("1_mrphh")
+script = ExtResource("1_5ij2u")
+fading_objects = [NodePath("Blip Main"), NodePath("Blip Ring")]
 
 [node name="Blip Main" type="ColorRect" parent="."]
 visibility_layer = 2

@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://cxgjm3nke651"]
 
 [ext_resource type="Texture2D" uid="uid://c5diqrf4rfjdk" path="res://art/entities/ally_1.png" id="1_njvpi"]
-[ext_resource type="Script" path="res://scripts/random_movement.gd" id="2_phj8p"]
-[ext_resource type="Script" path="res://scripts/sprite_randomizer.gd" id="3_a0466"]
+[ext_resource type="Script" path="res://scripts/gameplay/random_movement.gd" id="1_u2wsb"]
+[ext_resource type="Script" path="res://scripts/gameplay/sprite_randomizer.gd" id="3_cdkw0"]
 [ext_resource type="PackedScene" uid="uid://cccuglnuhn14h" path="res://blips/good_blip.tscn" id="3_ceumy"]
 [ext_resource type="Texture2D" uid="uid://cxd3mtbxn6k0s" path="res://art/entities/ally_2.png" id="4_1l8ge"]
-[ext_resource type="Script" path="res://scripts/draggable_object.gd" id="6_1ws8v"]
+[ext_resource type="Script" path="res://scripts/gameplay/draggable_object.gd" id="6_ygu1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nasw7"]
 size = Vector2(39, 42)
 
 [node name="Good Guy" type="Node2D"]
-script = ExtResource("2_phj8p")
+script = ExtResource("1_u2wsb")
 movement_range = Vector2(60, 40)
 max_velocity = 20.0
 acceleration = 20.0
@@ -19,7 +19,7 @@ acceleration = 20.0
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("1_njvpi")
-script = ExtResource("3_a0466")
+script = ExtResource("3_cdkw0")
 textures = Array[Texture2D]([ExtResource("1_njvpi"), ExtResource("4_1l8ge")])
 metadata/_edit_group_ = true
 
@@ -29,10 +29,11 @@ remote_path = NodePath("../Good Blip")
 update_rotation = false
 update_scale = false
 
-[node name="Good Blip" parent="." instance=ExtResource("3_ceumy")]
+[node name="Good Blip" parent="." node_paths=PackedStringArray("remote_transform") instance=ExtResource("3_ceumy")]
+remote_transform = NodePath("../Remote Transform")
 
 [node name="Drag Manager" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("6_1ws8v")
+script = ExtResource("6_ygu1c")
 sprite = NodePath("../Sprite")
 
 [node name="Mouse Detector" type="Area2D" parent="."]

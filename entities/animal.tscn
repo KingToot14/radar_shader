@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://cuh5fsfrccj1o"]
 
+[ext_resource type="Script" path="res://scripts/gameplay/random_movement.gd" id="1_8b0df"]
 [ext_resource type="Texture2D" uid="uid://ctnh2e51qf0u4" path="res://art/entities/rat.png" id="1_dyx6c"]
-[ext_resource type="Script" path="res://scripts/random_movement.gd" id="2_nobpk"]
 [ext_resource type="PackedScene" uid="uid://colqfx7083f8k" path="res://blips/neutral_blip.tscn" id="3_58mx1"]
-[ext_resource type="Script" path="res://scripts/sprite_randomizer.gd" id="3_w2dko"]
-[ext_resource type="Script" path="res://scripts/draggable_object.gd" id="5_b8att"]
+[ext_resource type="Script" path="res://scripts/gameplay/sprite_randomizer.gd" id="3_vlbde"]
+[ext_resource type="Script" path="res://scripts/gameplay/draggable_object.gd" id="5_j0fdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyun"]
 size = Vector2(48, 48)
 
 [node name="Animal" type="Node2D"]
-script = ExtResource("2_nobpk")
+script = ExtResource("1_8b0df")
 movement_range = Vector2(50, 25)
 max_velocity = 15.0
 acceleration = 15.0
@@ -18,7 +18,7 @@ acceleration = 15.0
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("1_dyx6c")
-script = ExtResource("3_w2dko")
+script = ExtResource("3_vlbde")
 textures = Array[Texture2D]([ExtResource("1_dyx6c")])
 randomize_h = true
 metadata/_edit_group_ = true
@@ -29,10 +29,11 @@ remote_path = NodePath("../Neutral Blip")
 update_rotation = false
 update_scale = false
 
-[node name="Neutral Blip" parent="." instance=ExtResource("3_58mx1")]
+[node name="Neutral Blip" parent="." node_paths=PackedStringArray("remote_transform") instance=ExtResource("3_58mx1")]
+remote_transform = NodePath("../Remote Transform")
 
 [node name="Drag Manager" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("5_b8att")
+script = ExtResource("5_j0fdw")
 sprite = NodePath("../Sprite")
 
 [node name="Mouse Detector" type="Area2D" parent="."]
